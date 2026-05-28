@@ -1,3 +1,7 @@
+const cardEl = document.getElementById("card-element")
+const cardsShuffle = []
+let count = 0
+
 const myCards = [
     {
         name: "Credit Card",
@@ -20,5 +24,19 @@ const myCards = [
         description: "Each played 10 or 4 gives +10 Chips and +4 Mult when scored"
     }
 ]
-// aqui generamos el randomShuffle
-const randomShuffle = myCards[Math.floor(myCards.length * Math.random())]
+
+// aqui creamos el orden aleatorio de mi array
+function shuffleDeck(myCards) { 
+    for (let card of myCards) {
+        card = myCards[Math.floor(myCards.length * Math.random())]
+        cardsShuffle.push(card)
+    }
+    console.log(cardsShuffle)
+}
+
+shuffleDeck(myCards)
+
+
+myCards[Math.floor(myCards.length * Math.random())] 
+
+// cardEl.innerHTML = `<li>${randomShuffle.name} is a ${randomShuffle.type}</li>`  
