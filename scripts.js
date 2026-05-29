@@ -26,23 +26,18 @@ const myCards = [
 ]
 
 // aqui creamos el orden aleatorio de mi array
-function shuffleDeck(arr) { 
-    arr.forEach(card => {
-        card = arr[Math.floor(arr.length * Math.random())]
-        if (cardsShuffle.includes(card)) {
+function shuffleDeck(myCards) {
+    for (let card of myCards) {
+        card = myCards[Math.floor(myCards.length * Math.random())]
+        while ( cardsShuffle.includes(card) ) {
             card = ''
-            card = arr[Math.floor(arr.length * Math.random())]
-        } else {
-            cardsShuffle.push(card)
-        }
-        return cardsShuffle
-    })
+            card = myCards[Math.floor(myCards.length * Math.random())]
+        } 
+        cardsShuffle.push(card)
+    }
     console.log(cardsShuffle)
 }
 
 shuffleDeck(myCards)
-
-
-myCards[Math.floor(myCards.length * Math.random())] 
 
 // cardEl.innerHTML = `<li>${randomShuffle.name} is a ${randomShuffle.type}</li>`  
