@@ -1,6 +1,4 @@
 const cardEl = document.getElementById("card-element")
-const cardsShuffle = []
-let count = 0
 
 const myCards = [
     {
@@ -29,15 +27,13 @@ const myCards = [
     }
 ]
 
+// usamos concat para unir las cartas 
+const cardsShuffle = myCards.concat(myCards)
+
 // aqui creamos el orden aleatorio de mi array
-function shuffleDeck(myCards) {
-    for (let card of myCards) {
-        card = myCards[Math.floor(myCards.length * Math.random())]
-        while ( cardsShuffle.includes(card) ) {
-            card = ''
-            card = myCards[Math.floor(myCards.length * Math.random())]
-        } 
-        cardsShuffle.push(card)
+function shuffleDeck(cardsShuffle) {
+    for (let card of cardsShuffle) {
+        card = cardsShuffle[Math.floor(cardsShuffle.length * Math.random())]
     }
     return cardsShuffle
 }
@@ -46,7 +42,11 @@ shuffleDeck(myCards)
 // aqui hacemos render de las cartas
 function renderCards() {
     cardsShuffle.map( card => {
-        cardEl.innerHTML += `<li><img src="/img/back-card-img.svg" alt="the image of a back card style like balatro">${card.name} is a  ${card.type}</img></li>`
+        cardEl.innerHTML += `
+            <li>
+                This is ${card.name} and type ${card.type}
+                <img src="/img/back-card-img.svg" alt="the image of a back card style like balatro"></img>
+            </li>`
     })
 }
 
