@@ -27,25 +27,29 @@ const myCards = [
     }
 ]
 
-// crear un nuevo array para las cartas mezcladas
-// podemos 
-
-// usamos concat para unir las cartas 
-const cardsShuffle = myCards.concat(myCards)
+// creamos el array para guardar las cartas
+let shuffleCards = []
 
 // aqui creamos el orden aleatorio de mi array
-function shuffleDeck(cardsShuffle) {
-    for (let card of cardsShuffle) {
-        card = cardsShuffle[Math.floor(cardsShuffle.length * Math.random())]
+function shuffleDeck(list) {
+    
+    const cardsShuffle = list.concat(list)
+
+    while (cardsShuffle.length > 0) {
+        let position = Math.floor(Math.random() * cardsShuffle.length)
+        let element = cardsShuffle.splice(position, 1)[0]
+        shuffleCards.unshift((element))
     }
-    return cardsShuffle
+    return shuffleCards
 }
-// aqui pasamos el array con las cartas duplicadas
-shuffleDeck(cardsShuffle)
+// aqui pasamos el array de las cartas
+shuffleDeck(myCards)
+
+console.log(shuffleCards)
 
 // aqui hacemos render de las cartas
-function renderCards() {
-    cardsShuffle.map( card => {
+function renderCards(shuffleCards) {
+    shuffleCards.map( card => {
         cardEl.innerHTML += `
             <li>
                 This is ${card.name} and type ${card.type}
@@ -54,4 +58,4 @@ function renderCards() {
     })
 }
 
-renderCards()
+renderCards(shuffleCards)
