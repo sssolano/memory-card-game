@@ -27,6 +27,24 @@ const myCards = [
         type: "Joker",
         description: "Each played 10 or 4 gives +10 Chips and +4 Mult when scored",
         img: "/img/walkie-talkie-joker.svg",
+    },
+    {
+        name: "Blueprint",
+        type: "Joker",
+        description: "Copies ability of Joker to the right",
+        img: "/img/blueprint-joker.svg"
+    },
+    {
+        name: "Polychrome Ace",
+        type: "Card",
+        description: "Modifier that gives an played card a x1.5 multiplier to your total mult",
+        img: "/img/polychrome-ace-card.svg"
+    },
+    {
+        name: "Cryptid",
+        type: "Spectral Card",
+        description: "Creates 2 exact copies (including Enhancements) of a selected card in your hand",
+        img: "/img/cryptid-spectral_card.svg"
     }
 ]
 
