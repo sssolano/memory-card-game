@@ -27,6 +27,9 @@ const myCards = [
     }
 ]
 
+// crear un nuevo array para las cartas mezcladas
+// podemos 
+
 // usamos concat para unir las cartas 
 const cardsShuffle = myCards.concat(myCards)
 
@@ -37,7 +40,8 @@ function shuffleDeck(cardsShuffle) {
     }
     return cardsShuffle
 }
-shuffleDeck(myCards)
+// aqui pasamos el array con las cartas duplicadas
+shuffleDeck(cardsShuffle)
 
 // aqui hacemos render de las cartas
 function renderCards() {
