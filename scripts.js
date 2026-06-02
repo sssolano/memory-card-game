@@ -1,5 +1,8 @@
 const cardEl = document.getElementById("card-element")
 
+// añadir 3 cartas más, total 7 -> duplicadas 14
+// añadir las definiciones del juego -> estilo balatro 
+
 const myCards = [
     {
         name: "Credit Card",
@@ -45,14 +48,15 @@ function shuffleDeck(list) {
 // aqui pasamos el array de las cartas
 shuffleDeck(myCards)
 
+// verificar que si funciona
 console.log(shuffleCards)
 
 // aqui hacemos render de las cartas
+// mensaje del tipo de la carta -> This is ${card.name} and type ${card.type}
 function renderCards(shuffleCards) {
     shuffleCards.map( card => {
         cardEl.innerHTML += `
             <li>
-                This is ${card.name} and type ${card.type}
                 <img src="/img/back-card-img.svg" alt="the image of a back card style like balatro"></img>
             </li>`
     })
