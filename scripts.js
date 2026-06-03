@@ -1,6 +1,5 @@
 const cardEl = document.getElementById("card-element")
 
-// añadir 3 cartas más, total 7 -> duplicadas 14
 // añadir las definiciones del juego -> estilo balatro 
 
 const myCards = [

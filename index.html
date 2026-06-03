@@ -7,13 +7,25 @@
     <title>Simple Balatro memory game</title>
 </head>
 <body>
-    <!-- aqui ponemos las instrucciones estilo balatro -->
-    <div id="instructions-div">
-        
-    </div>
     <video autoplay muted loop id="background-video">
         <source src="/img/background-game.mp4" type="video/mp4">
     </video>
+    <!-- aqui ponemos las instrucciones estilo balatro -->
+    <div id="instructions-div">
+        <!-- instrucciones sobre que es el juego -->
+        <div id="def-game-div">
+            <h1>How to play</h1>
+            <div class="white-background">
+                <p>This is a <a class="text-green">memory card game</a></p>
+            </div>
+        </div>
+        <div id="def-lives-div">
+            <h1>Your lives</h1>
+            <div class="white-backgrounds">
+                <p>This red box represents <a class="text-red">the amount of lives left</a></p>
+            </div>
+        </div>
+    </div>
     <div id="cards-div">
         <ul id="card-element">
         </ul>

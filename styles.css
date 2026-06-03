@@ -10,7 +10,7 @@ body {
 }
 
 ul {
-    margin-top: 250px;
+    margin-top: 70px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -34,9 +34,66 @@ ul {
     z-index: 1;
 }
 
+#instructions-div {
+    z-index: 2;
+    position: relative;
+    margin: 40px 40px;
+    display: flex;
+    justify-content: space-around;
+}
+
+h1 {
+    color: #FFFFFF;
+}
+
+p {
+    color: #585E66;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#def-game-div {
+    border: 4px solid #B5C1D2;
+    border-radius: 28px;
+    background-color: #38474E;
+    width: 266px;
+    text-align: center;
+}
+
+.text-green {
+    color: #36AF80; /* green text color */
+}
+
+.white-background {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    z-index: 3;
+    position: relative;
+    width: 248px;
+    height: 80px;
+    margin: 8px auto;
+    justify-content: center;
+    align-items: center;
+}
+
+#def-lives-div {
+    border: 4px solid #B5C1D2;
+    border-radius: 28px;
+    background-color: #38474E;
+    width: 280px;
+    text-align: center;
+}
+
+.text-red {
+    color: #EF4637;
+}
+
 /** colores que vamos a utilizar para la primera parta */
 /* background main color -> 38474E */
 /* border color -> B5C1D2 */
 /* green text color -> 36AF80 */
 /* title color -> FFFFFF */
 /* grey text color -> 585E66 */
+
+
+/* red text color -> EF4637 */
