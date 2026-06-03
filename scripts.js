@@ -85,7 +85,10 @@ renderCards(shuffleCards)
 // aqui hacemos la verificacion de los clicks en los li
 
 ulEl.forEach(element => {
+    let correctGuess = []
     element.addEventListener('click', event => {
-        console.log("Element clicked!!!")
+       if (event.target.tagName === 'IMG') {
+        console.log(event.target)
+       }
     })
 })
