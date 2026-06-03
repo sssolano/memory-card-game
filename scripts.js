@@ -1,4 +1,5 @@
 const cardEl = document.getElementById("card-element")
+const ulEl = document.querySelectorAll("#card-element")
 
 // añadir las definiciones del juego -> estilo balatro 
 
@@ -62,6 +63,7 @@ function shuffleDeck(list) {
     }
     return shuffleCards
 }
+
 // aqui pasamos el array de las cartas
 shuffleDeck(myCards)
 
@@ -69,7 +71,6 @@ shuffleDeck(myCards)
 console.log(shuffleCards)
 
 // aqui hacemos render de las cartas
-// mensaje del tipo de la carta -> This is ${card.name} and type ${card.type}
 function renderCards(shuffleCards) {
     shuffleCards.map( card => {
         cardEl.innerHTML += `
@@ -80,3 +81,11 @@ function renderCards(shuffleCards) {
 }
 
 renderCards(shuffleCards)
+
+// aqui hacemos la verificacion de los clicks en los li
+
+ulEl.forEach(element => {
+    element.addEventListener('click', event => {
+        console.log("Element clicked!!!")
+    })
+})
