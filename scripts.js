@@ -1,5 +1,5 @@
 const cardEl = document.getElementById("card-element")
-const ulEl = document.querySelectorAll("#card-element")
+const ulEl = document.querySelector("#card-element")
 
 // añadir las definiciones del juego -> estilo balatro 
 
@@ -73,10 +73,12 @@ console.log(shuffleCards)
 // aqui hacemos render de las cartas
 function renderCards(shuffleCards) {
     shuffleCards.map( card => {
+        // utilizamos la propiedad data crear una propiedad que guarde el nombre de la carta cuando hace render
         cardEl.innerHTML += `
-            <li>
+            <li data-card-name="${card.name}">
                 <img src="/img/back-card-img.svg" alt="the image of a back card style like balatro"></img>
-            </li>`
+            </li>
+            `
     })
 }
 
@@ -84,11 +86,17 @@ renderCards(shuffleCards)
 
 // aqui hacemos la verificacion de los clicks en los li
 
-ulEl.forEach(element => {
-    let correctGuess = []
-    element.addEventListener('click', event => {
-       if (event.target.tagName === 'IMG') {
-        console.log(event.target)
-       }
-    })
+ulEl.addEventListener('click', event => {
+    if (event.target.matches('img')) {
+        console.log(`${event}`)
+    }
 })
+
+// ulEl.forEach(element => {
+//     let correctGuess = []
+//     element.addEventListener('click', event => {
+//        if (event.target.tagName === 'IMG') {
+//         console.log(event.target)
+//        }
+//     })
+// })
