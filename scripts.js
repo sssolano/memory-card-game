@@ -75,7 +75,7 @@ function renderCards(shuffleCards) {
     shuffleCards.map( card => {
         // utilizamos la propiedad data crear una propiedad que guarde el nombre de la carta cuando hace render
         cardEl.innerHTML += `
-            <li data-card-name="${card.name}">
+            <li data-card-name="${card.name}" data-card-img="${card.img}">
                 <img src="/img/back-card-img.svg" alt="the image of a back card style like balatro"></img>
             </li>
             `
@@ -85,18 +85,11 @@ function renderCards(shuffleCards) {
 renderCards(shuffleCards)
 
 // aqui hacemos la verificacion de los clicks en los li
+// tenemos que crear una funcion para esto
 
 ulEl.addEventListener('click', event => {
     if (event.target.matches('img')) {
-        console.log(`${event}`)
+        // accedemos al elemento padre <li></li> porque ahi esta la img
+        console.log(event.target.parentElement.dataset.cardName)
     }
 })
-
-// ulEl.forEach(element => {
-//     let correctGuess = []
-//     element.addEventListener('click', event => {
-//        if (event.target.tagName === 'IMG') {
-//         console.log(event.target)
-//        }
-//     })
-// })
