@@ -76,7 +76,7 @@ function renderCards(shuffleCards) {
         // utilizamos la propiedad data crear una propiedad que guarde el nombre de la carta cuando hace render
         cardEl.innerHTML += `
             <li data-card-name="${card.name}" data-card-img="${card.img}">
-                <img src="/img/back-card-img.svg" alt="the image of a back card style like balatro"></img>
+                <img src="/img/back-card-img.svg" alt="the image of a back card style like balatro">
             </li>
             `
     })
@@ -87,9 +87,23 @@ renderCards(shuffleCards)
 // aqui hacemos la verificacion de los clicks en los li
 // tenemos que crear una funcion para esto
 
+let cardsFlipped = []
+
 ulEl.addEventListener('click', event => {
     if (event.target.matches('img')) {
         // accedemos al elemento padre <li></li> porque ahi esta la img
-        console.log(event.target.parentElement.dataset.cardName)
+        // console.log(event.target.parentElement.dataset.cardName)
+        event.target.src = event.target.parentElement.dataset.cardImg
+        cardsFlipped.push(event.target.parentElement.dataset.cardName)
+        // logica funciona, pero hay que mejorarla
+        if (cardsFlipped.length === 2) {
+            cardsFlipped.reduce( (firstCard, secondCard) => {
+                if (firstCard === secondCard) {
+                    console.log("SAME CARD :3!!!")
+                } else {
+                    console.log("NOT the same card >:(")
+                }
+            })
+        }
     }
 })
