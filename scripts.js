@@ -91,19 +91,22 @@ let cardsFlipped = []
 
 ulEl.addEventListener('click', event => {
     if (event.target.matches('img')) {
+        let backCard = event.target.src
+        let cardName = event.target.parentElement.dataset.cardName
+
         // accedemos al elemento padre <li></li> porque ahi esta la img
-        // console.log(event.target.parentElement.dataset.cardName)
         event.target.src = event.target.parentElement.dataset.cardImg
-        cardsFlipped.push(event.target.parentElement.dataset.cardName)
-        // logica funciona, pero hay que mejorarla
+        cardsFlipped.push(cardName, event.target)
+        console.log(cardsFlipped)
+
         if (cardsFlipped.length === 2) {
-            cardsFlipped.reduce( (firstCard, secondCard) => {
-                if (firstCard === secondCard) {
-                    console.log("SAME CARD :3!!!")
-                } else {
-                    console.log("NOT the same card >:(")
-                }
-            })
+            if (cardsFlipped[0] === cardsFlipped[1]) {
+                console.log("SAME CARD :3!!!")
+            } else {
+                cardsFlipped[0] = backCard
+                cardsFlipped = []
+                console.log("NOT the same card >:(")
+            }
         }
     }
 })
