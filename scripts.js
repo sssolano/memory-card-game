@@ -86,6 +86,8 @@ renderCards(shuffleCards)
 
 // aqui hacemos la verificacion de los clicks en los li
 // tenemos que crear una funcion para esto
+// las cartas correctas mantienen su carta, y si falla quitamos esas cartas de la lista talvez?
+// poder añdir algun indicador de intentos posibles
 
 let cardsFlipped = []
 
@@ -97,11 +99,12 @@ ulEl.addEventListener('click', event => {
         // accedemos al elemento padre <li></li> porque ahi esta la img
         event.target.src = event.target.parentElement.dataset.cardImg
         cardsFlipped.push(event.target)
-        console.log(cardsFlipped[0].dataset.cardName)
-        
+        console.log(cardsFlipped[0].parentElement.dataset.cardImg)
 
         if (cardsFlipped.length === 2) {
+            console.log(cardsFlipped[0].parentElement.dataset.name)
             if (cardsFlipped[0] === cardsFlipped[1]) {
+
                 cardsFlipped = []
                 console.log(cardsFlipped)
                 console.log("SAME CARD :3!!!")
