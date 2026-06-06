@@ -76,7 +76,7 @@ function renderCards(shuffleCards) {
         // utilizamos la propiedad data crear una propiedad que guarde el nombre de la carta cuando hace render
         cardEl.innerHTML += `
             <li data-card-name="${card.name}" data-card-img="${card.img}">
-                <img src="/img/back-card-img.svg" alt="the image of a back card style like balatro">
+                <img src="/img/back-card-img.svg" data-original-img="/img/back-card-img.svg" alt="the image of a back card style like balatro">
             </li>
             `
     })
@@ -91,20 +91,26 @@ let cardsFlipped = []
 
 ulEl.addEventListener('click', event => {
     if (event.target.matches('img')) {
-        let backCard = event.target.src
+        // let backCard = event.target.src
         let cardName = event.target.parentElement.dataset.cardName
 
         // accedemos al elemento padre <li></li> porque ahi esta la img
         event.target.src = event.target.parentElement.dataset.cardImg
-        cardsFlipped.push(cardName, event.target)
-        console.log(cardsFlipped)
+        cardsFlipped.push(event.target)
+        console.log(cardsFlipped[0].dataset.cardName)
+        
 
         if (cardsFlipped.length === 2) {
             if (cardsFlipped[0] === cardsFlipped[1]) {
+                cardsFlipped = []
+                console.log(cardsFlipped)
                 console.log("SAME CARD :3!!!")
             } else {
-                cardsFlipped[0] = backCard
-                cardsFlipped = []
+                setTimeout( () => {
+                    cardsFlipped[1].src = cardsFlipped[1].dataset.originalImg,
+                    cardsFlipped[0].src = cardsFlipped[0].dataset.originalImg,
+                    cardsFlipped = []
+                }, 1000)
                 console.log("NOT the same card >:(")
             }
         }
