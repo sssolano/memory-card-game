@@ -89,13 +89,12 @@ renderCards(shuffleCards)
 // aqui hacemos la verificacion de los clicks en los li
 let cardsFlipped = []
 
-function checkCards () {
-    ulEl.addEventListener('click', event => {
-        if (event.target.matches('img')) {
+ulEl.addEventListener('click', event => {
+    if (event.target.matches('img')) {
         // verificamos que si ya se hizo click sobre una imagen, no se pueda hacer dos veces
-            if (cardsFlipped.includes(event.target)) {
-                return true
-            }
+        if (cardsFlipped.includes(event.target)) {
+            return true
+        }
         // accedemos al elemento padre <li></li> porque ahi esta la img
         event.target.src = event.target.parentElement.dataset.cardImg
         cardsFlipped.push(event.target)
@@ -109,12 +108,21 @@ function checkCards () {
                     cardsFlipped[1].src = cardsFlipped[1].dataset.originalImg,
                     cardsFlipped[0].src = cardsFlipped[0].dataset.originalImg,
                     cardsFlipped = []
-                }, 1000)
+                    if (counter === 0) {
+                        resetGame()
+                    }
+                }, 600)
                 textEl.innerHTML = `${counter--}`
             }
         }
     }
-    })
-}
+})
 
-checkCards()
+
+function resetGame () {
+    cardEl.innerHTML = ''
+    counter = 6
+    shuffleCards = []
+    shuffleDeck(myCards)
+    renderCards(shuffleCards)
+}
