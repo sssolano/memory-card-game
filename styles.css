@@ -106,12 +106,19 @@ p {
     margin-block-end: 0;
 }
 
-/** colores que vamos a utilizar para la primera parta */
-/* background main color -> 38474E */
-/* border color -> B5C1D2 */
-/* green text color -> 36AF80 */
-/* title color -> FFFFFF */
-/* grey text color -> 585E66 */
+#lives-box {
+    width: 167px;
+    height: 52px;
+    background-color: #EF4637;
+    border-radius: 20px;
+    z-index: 3;
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-
-/* red text color -> EF4637 */
+#live-text {
+    color: #FFFFFF;
+    font-size: x-large;
+}

@@ -1,7 +1,9 @@
 const cardEl = document.getElementById("card-element")
 const ulEl = document.querySelector("#card-element")
+const textEl = document.getElementById("text-lives")
 
-// añadir las definiciones del juego -> estilo balatro 
+let counter = 6
+
 
 const myCards = [
     {
@@ -67,8 +69,6 @@ function shuffleDeck(list) {
 // aqui pasamos el array de las cartas
 shuffleDeck(myCards)
 
-// verificar que si funciona
-console.log(shuffleCards)
 
 // aqui hacemos render de las cartas
 function renderCards(shuffleCards) {
@@ -80,42 +80,41 @@ function renderCards(shuffleCards) {
             </li>
             `
     })
+    textEl.innerHTML = `${counter--}`
 }
 
 renderCards(shuffleCards)
 
-// aqui hacemos la verificacion de los clicks en los li
-// tenemos que crear una funcion para esto
-// las cartas correctas mantienen su carta, y si falla quitamos esas cartas de la lista talvez?
-// poder añdir algun indicador de intentos posibles
 
+// aqui hacemos la verificacion de los clicks en los li
 let cardsFlipped = []
 
-ulEl.addEventListener('click', event => {
-    if (event.target.matches('img')) {
-        // let backCard = event.target.src
-        let cardName = event.target.parentElement.dataset.cardName
-
+function checkCards () {
+    ulEl.addEventListener('click', event => {
+        if (event.target.matches('img')) {
+        // verificamos que si ya se hizo click sobre una imagen, no se pueda hacer dos veces
+            if (cardsFlipped.includes(event.target)) {
+                return true
+            }
         // accedemos al elemento padre <li></li> porque ahi esta la img
         event.target.src = event.target.parentElement.dataset.cardImg
         cardsFlipped.push(event.target)
-        console.log(cardsFlipped[0].parentElement.dataset.cardImg)
 
         if (cardsFlipped.length === 2) {
-            console.log(cardsFlipped[0].parentElement.dataset.name)
-            if (cardsFlipped[0] === cardsFlipped[1]) {
-
+            // validamos si el nombre de la carta es el mismo
+            if (cardsFlipped[0].parentElement.dataset.cardName === cardsFlipped[1].parentElement.dataset.cardName) {
                 cardsFlipped = []
-                console.log(cardsFlipped)
-                console.log("SAME CARD :3!!!")
             } else {
                 setTimeout( () => {
                     cardsFlipped[1].src = cardsFlipped[1].dataset.originalImg,
                     cardsFlipped[0].src = cardsFlipped[0].dataset.originalImg,
                     cardsFlipped = []
                 }, 1000)
-                console.log("NOT the same card >:(")
+                textEl.innerHTML = `${counter--}`
             }
         }
     }
-})
+    })
+}
+
+checkCards()
