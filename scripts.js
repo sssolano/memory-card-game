@@ -118,7 +118,7 @@ ulEl.addEventListener('click', event => {
     }
 })
 
-
+// funcion para resetar el juego
 function resetGame () {
     cardEl.innerHTML = ''
     counter = 6
