@@ -1,6 +1,8 @@
 # Balatro Memory Card Game 🃏
  
 A memory card game built with vanilla HTML, CSS, and JavaScript, inspired by the aesthetic of [Balatro](https://www.playbalatro.com/).
+
+🔗 **[Live Demo](https://animated-griffin-7116ec.netlify.app/)**
  
 ## How to Play
  
