@@ -2,8 +2,8 @@ const cardEl = document.getElementById("card-element")
 const ulEl = document.querySelector("#card-element")
 const textEl = document.getElementById("text-lives")
 
-let counter = 6
-
+let counter = 100
+let correctCards = 0
 
 const myCards = [
     {
@@ -80,7 +80,7 @@ function renderCards(shuffleCards) {
             </li>
             `
     })
-    textEl.innerHTML = `${counter--}`
+    textEl.innerHTML = `${counter}`
 }
 
 renderCards(shuffleCards)
@@ -102,17 +102,25 @@ ulEl.addEventListener('click', event => {
         if (cardsFlipped.length === 2) {
             // validamos si el nombre de la carta es el mismo
             if (cardsFlipped[0].parentElement.dataset.cardName === cardsFlipped[1].parentElement.dataset.cardName) {
+                correctCards += 1
                 cardsFlipped = []
+                console.log(correctCards)
+                if (correctCards === 7) {
+                    resetGame()
+                }
             } else {
+                textEl.innerHTML = `${counter -= 1}`
+                console.log()
                 setTimeout( () => {
                     cardsFlipped[1].src = cardsFlipped[1].dataset.originalImg,
                     cardsFlipped[0].src = cardsFlipped[0].dataset.originalImg,
                     cardsFlipped = []
+                }, 600)
+                setTimeout( () => {
                     if (counter === 0) {
                         resetGame()
                     }
-                }, 600)
-                textEl.innerHTML = `${counter--}`
+                }, 1200)
             }
         }
     }
@@ -125,4 +133,5 @@ function resetGame () {
     shuffleCards = []
     shuffleDeck(myCards)
     renderCards(shuffleCards)
+    correctCards = 0
 }
