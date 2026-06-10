@@ -1,8 +1,9 @@
 const cardEl = document.getElementById("card-element")
 const ulEl = document.querySelector("#card-element")
 const textEl = document.getElementById("text-lives")
+const playerEl = document.getElementById("player-won")
 
-let counter = 100
+let counter = 8
 let correctCards = 0
 
 const myCards = [
@@ -106,7 +107,12 @@ ulEl.addEventListener('click', event => {
                 cardsFlipped = []
                 console.log(correctCards)
                 if (correctCards === 7) {
-                    resetGame()
+                    setTimeout( () => {
+                        playerEl.innerHTML = `${alert("YOU WON!!")}`
+                    }, 800) 
+                    setTimeout( () => {
+                        resetGame()
+                    },1200)
                 }
             } else {
                 textEl.innerHTML = `${counter -= 1}`
